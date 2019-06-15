@@ -1,0 +1,33 @@
+﻿<Window x:Class="Puzzel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" HorizontalAlignment="Center" VerticalAlignment="Center" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Button x:Key="PuzzelButton" Width="100" Height="100" Click="Button_Click"></Button>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Name="grid"></Grid>
+        <ItemsControl x:Name="puzzelItem" Grid.Row="1" Width="600" Height="600" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        <Button Content="GenerateNew" HorizontalAlignment="Left" Click="GenerateNewButton_Click"/>
+        <Button Content="Save" HorizontalAlignment="Right" Width="74" Click="BtnSave_Click"/>
+        <Button x:Name="btnEnter" Content="LoadFromCache" HorizontalAlignment="Right" Width="74" Click="BtnLoadfromCache_Click" Margin="0,0,74,0"/>
+        <TextBox x:Name="txtNumber" HorizontalAlignment="Right" Margin="0,0,148,0" TextWrapping="Wrap" Text="10" Width="47"/>
+        <Label x:Name="lblStatus" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="295,261,295,313" Grid.Row="1"/>
+        <ProgressBar x:Name="progress" Height="5" Margin="0" Grid.Row="1" VerticalAlignment="Bottom" SmallChange="1"/>
+    </Grid>
+</Window>
