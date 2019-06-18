@@ -18,7 +18,7 @@ namespace Puzzel.ViewModel
         //size of a puzzel button
         int size = 0;
 
-        private string rowCount;
+        private string rowCount="3";
 
         public string RowCount
         {
@@ -78,8 +78,6 @@ namespace Puzzel.ViewModel
             {
                 if (ButtonList.Last().Margin.Left + ButtonList.Last().Width > 600)
                 {
-
-
                     ButtonList.Last().Margin = new Thickness(0, ButtonList.Last().Margin.Top + size, ButtonList.Last().Margin.Right, ButtonList.Last().Margin.Bottom);
                 }
 
@@ -176,8 +174,9 @@ namespace Puzzel.ViewModel
                 button.Height = size;
                 button.HorizontalAlignment = HorizontalAlignment.Left;
                 button.VerticalAlignment = VerticalAlignment.Top;
-                //button.Content = random(int.Parse(RowCount) * int.Parse(RowCount));
-                button.Content = ButtonList.Count + 1;
+                button.Content = random(int.Parse(Math.Pow(int.Parse(rowCount), 2)+""));
+                button.FontSize = 30;
+
                 if (lastButton == null)
                 {
                     button.Margin = new Thickness(0);
@@ -187,12 +186,7 @@ namespace Puzzel.ViewModel
                 }
                 else
                 {
-                    changePosition(
-                        new Thickness(0, 0, 0, 0),
-                        new Thickness(lastButton.Margin.Left + size, lastButton.Margin.Top, 0, 0),
-                        button
-                        );
-
+                   
                     button.Margin = new Thickness(lastButton.Margin.Left + size, lastButton.Margin.Top, 0, 0);
 
 

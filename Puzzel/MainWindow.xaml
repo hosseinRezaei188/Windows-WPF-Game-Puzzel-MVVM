@@ -5,31 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:viewModel="clr-namespace:Puzzel.ViewModel"
-        Title="MainWindow" HorizontalAlignment="Center" VerticalAlignment="Center" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" HorizontalAlignment="Center" VerticalAlignment="Center" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" FontFamily="Bodoni MT Black">
 
-  
+
     <Window.DataContext>
         <viewModel:ViewModel/>
     </Window.DataContext>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="233*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ItemsControl x:Name="puzzelItem"  ItemsSource="{Binding ButtonList,Mode=OneWay}" Grid.Row="1" Width="600" Height="600" >
+        <ItemsControl x:Name="puzzelItem"  ItemsSource="{Binding ButtonList,Mode=OneWay}" Grid.Row="1" Width="600" Height="600" Grid.ColumnSpan="3" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ItemsControl>
-        <Button Content="GenerateNew" Command="{Binding GeneratePuzzels}" HorizontalAlignment="Left" />
-        <Button Content="Save" HorizontalAlignment="Right" Width="74" Click="BtnSave_Click"/>
-        <Button x:Name="btnEnter" Content="LoadFromCache" HorizontalAlignment="Right" Width="74" Click="BtnLoadfromCache_Click" Margin="0,0,74,0"/>
-        <TextBox x:Name="txtNumber" Text="{Binding RowCount,Mode=OneWayToSource}" HorizontalAlignment="Right" Margin="0,0,148,0" TextWrapping="Wrap" Width="47"/>
-        <Label x:Name="lblStatus" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="295,261,295,313" Grid.Row="1"/>
-        <ProgressBar x:Name="progress" Height="5" Margin="0" Grid.Row="1" VerticalAlignment="Bottom" SmallChange="1"/>
-        <Button Content="remove" Command="{Binding ShuffelList}" HorizontalAlignment="Left" Margin="76,0,0,0" Width="75"/>
-        <Button Content="add" Command="{Binding Add}" HorizontalAlignment="Left" Margin="151,0,0,0" Width="75"/>
+        <Button Content="GenerateNew" Command="{Binding GeneratePuzzels}" Height="25" Padding="5,1" />
+        <TextBox x:Name="txtNumber" Text="{Binding RowCount,Mode=TwoWay}" HorizontalAlignment="Left" TextWrapping="Wrap" MinWidth="150" Background="#FFE2E2E2" Grid.Column="2" FontSize="18" HorizontalContentAlignment="Center"/>
+        <Label x:Name="lblStatus" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,262,295,314" Grid.Row="1" Grid.Column="2"/>
+        <ProgressBar x:Name="progress" Height="5" Margin="0" Grid.Row="1" VerticalAlignment="Bottom" SmallChange="1" Grid.ColumnSpan="3"/>
+        <Label Content="RowCount:" Grid.Column="1" HorizontalAlignment="Left" VerticalContentAlignment="Center" Padding="17,5,5,5"/>
     </Grid>
 </Window>
